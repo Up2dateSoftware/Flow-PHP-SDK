@@ -13,7 +13,7 @@ PHP 8.0 and later.
 
 You can install the sdk via [Composer](http://getcomposer.org). Run the following command:
 ```bash
-composer require update/flow-sdk-php
+composer require up2date/flow-php-sdk
 ```
 
 To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading):
