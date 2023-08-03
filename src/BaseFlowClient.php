@@ -54,6 +54,9 @@ class BaseFlowClient implements BaseFlowClientInterface
             throw new InvalidArgumentException('$config must be a string or an array');
         }
 
+        $config['api_key'] = Flow::getApiKey();
+        $config['api_base'] = Flow::getApiBase();
+
         $config = \array_merge(self::DEFAULT_CONFIG, $config);
         $this->validateConfig($config);
 

@@ -36,11 +36,9 @@ If you use Composer, these dependencies should be handled automatically. If you 
 Create a Flow client with configuration:
 
 ```php
-$config = [
-    'api_key' => '10|x1lf89YRu4YVQEP7rHcnWA6YdHlGgl3nj7fAykGL',
-    'api_base' => 'https://flow.up2date.ro/api'
-];
-$flow = new \Up2date\FlowPhpSdk\FlowClient($config);
+Flow::setApiKey('10|x1lf89YRu4YVQEP7rHcnWA6YdHlGgl3nj7fAykGL');
+Flow::setApiBase('https://flow.up2date.ro/api');
+$flow = new \Up2date\FlowPhpSdk\FlowClient();
 ```
 
 ## Customers
@@ -87,6 +85,49 @@ Get the loyalty rules
 try {
     $loyaltyRules = $flow->loyalty->getRules();
     echo $loyaltyRules;
+} catch (Up2date\FlowPhpSdk\Exception\ApiErrorException $exception) {
+    echo $exception->getMessage()."\n";
+}
+```
+Add loyalty points from amount
+```php
+try {
+    $loyaltyParams = [
+        'total' => 100, // Amount in the default currency
+        'details' => 'Bonus points'
+    ];
+
+    $customer = $customer->addLoyaltyFromAmount($loyaltyParams);
+    
+} catch (Up2date\FlowPhpSdk\Exception\ApiErrorException $exception) {
+    echo $exception->getMessage()."\n";
+}
+```
+Remove loyalty points from amount
+```php
+try {
+    $loyaltyParams = [
+        'total' => 100,
+        'points' => 20,
+        'details' => 'Spend points'
+    ];
+
+    $customer = $customer->removeLoyaltyFromAmount($loyaltyParams);
+    
+} catch (Up2date\FlowPhpSdk\Exception\ApiErrorException $exception) {
+    echo $exception->getMessage()."\n";
+}
+```
+Calculate loyalty points from amount
+```php
+try {
+    $params = [
+        'total' => 100
+    ];
+
+    $points = $flow->loyalty->calculate($params);
+    echo $points->data;
+    
 } catch (Up2date\FlowPhpSdk\Exception\ApiErrorException $exception) {
     echo $exception->getMessage()."\n";
 }

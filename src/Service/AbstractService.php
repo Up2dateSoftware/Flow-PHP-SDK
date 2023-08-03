@@ -14,6 +14,7 @@ abstract class AbstractService
      */
     protected $client;
 
+
     /**
      * Initializes a new instance of the {@link AbstractService} class.
      *
@@ -56,31 +57,22 @@ abstract class AbstractService
         return $params;
     }
 
-    /**
-     * @param $method
-     * @param $path
-     * @param $params
-     * @param $opts
-     *
-     * @throws ApiErrorException if the request fails
-     *
-     * @return FlowObject
-     */
     protected function request($method, $path, $params, $opts)
     {
         return $this->getClient()->request($method, $path, self::formatParams($params), $opts);
     }
 
+
     protected function requestCollection($method, $path, $params, $opts)
     {
-        // TODO (MAJOR): Add this method to FlowClientInterface
+        // TODO (MAJOR): Add this method to StripeClientInterface
         // @phpstan-ignore-next-line
         return $this->getClient()->requestCollection($method, $path, self::formatParams($params), $opts);
     }
 
     protected function requestSearchResult($method, $path, $params, $opts)
     {
-        // TODO (MAJOR): Add this method to FlowClientInterface
+        // TODO (MAJOR): Add this method to StripeClientInterface
         // @phpstan-ignore-next-line
         return $this->getClient()->requestSearchResult($method, $path, self::formatParams($params), $opts);
     }

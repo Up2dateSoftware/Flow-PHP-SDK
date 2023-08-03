@@ -50,6 +50,11 @@ class Flow
         return self::$apiKey;
     }
 
+    public static function getApiBase()
+    {
+        return self::$apiBase;
+    }
+
     /**
      * @return Util\LoggerInterface the logger to which the library will
      *   produce messages
@@ -80,6 +85,11 @@ class Flow
     public static function setApiKey($apiKey)
     {
         self::$apiKey = $apiKey;
+    }
+
+    public static function setApiBase($apiBase)
+    {
+        self::$apiBase = $apiBase;
     }
 
     /**
