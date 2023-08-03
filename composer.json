@@ -1,0 +1,22 @@
+{
+    "name": "up2date/flow-php-sdk",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Up2date\\FlowPhpSdk\\": "src/"
+        }
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Marius Gheorghe",
+            "email": "marius.gheorghe@up2date.ro"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "ext-mbstring": "*",
+      "ext-curl": "*",
+        "ext-openssl": "*"
+    }
+}
