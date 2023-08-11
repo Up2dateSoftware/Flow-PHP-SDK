@@ -81,4 +81,11 @@ class Customer extends ApiResource
         return $this;
     }
 
+    public function addLoyaltyPoints($params, $opts = null)
+    {
+        list($response, $opts) = $this->_request('post', "/marketing/loyalty/add/{$this->id}", $params, $opts);
+        $this->refreshFrom($response, $opts);
+        return $this;
+    }
+
 }
