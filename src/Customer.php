@@ -74,4 +74,11 @@ class Customer extends ApiResource
         return $this;
     }
 
+    public function checkIfICanRemoveLoyaltyFromAmount($params, $opts = null)
+    {
+        list($response, $opts) = $this->_request('post', "/marketing/loyalty/canSpend/{$this->id}", $params, $opts);
+        $this->refreshFrom($response, $opts);
+        return $this;
+    }
+
 }
